@@ -20,11 +20,23 @@ function love.load()
 	litCandles = NUMCANDLES
 
 	love.graphics.setNewFont("LinBiolinum_R.otf", 50)
+	
+	-- streaming the file caused love to hang for some reason, hence "static"
+	tune = love.audio.newSource("birthday.ogg", "static")
+end
+
+function love.update()
+	-- when the candles are all blown out, play the birthday tune
+	if litCandles == 0 then
+		love.audio.play(tune)
+	end
 end
 
 function love.draw()
 	love.graphics.setColor(255, 255, 255, 255)
 	love.graphics.draw(background)
+
+
 
 	-- draw the flames for any candles still lit
 	for i in pairs(candles) do
@@ -35,9 +47,9 @@ function love.draw()
 	
 	-- print a message
 	love.graphics.setColor(0, 0, 0, 255)
-	if litCandles == NUMCANDLES then
+	if litCandles > 0 then
 		love.graphics.printf("Blow out the candles!", 0, 150, 800, "center")
-	elseif litCandles == 0 then
+	else
 		love.graphics.printf("Happy Birthday!", 0, 150, 800, "center")
 	end
 end
