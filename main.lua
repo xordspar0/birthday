@@ -1,5 +1,9 @@
 require("Candle")
 
+NUMCANDLES = 6
+FLAMEWIDTH = 32
+FLAMEHEIGHT = 32
+
 function love.load()
 	background = love.graphics.newImage("backgroud.png")
 	flame = love.graphics.newImage("flame.png")
@@ -13,6 +17,7 @@ function love.load()
 		Candle:new(370, 275),
 		Candle:new(400, 260)
 	}
+	litCandles = NUMCANDLES
 
 	love.graphics.setNewFont("LinBiolinum_R.otf", 50)
 end
@@ -22,20 +27,18 @@ function love.draw()
 	love.graphics.draw(background)
 
 	-- draw the flames for any candles still lit
-	litCandles = 0
 	for i in pairs(candles) do
 		if candles[i]:isLit() then
-			litCandles = litCandles + 1
 			love.graphics.draw(flame, candles[i].x, candles[i].y)
 		end
 	end
 	
 	-- print a message
 	love.graphics.setColor(0, 0, 0, 255)
-	if litCandles == 0 then
-		love.graphics.printf("Happy Birthday!", 0, 150, 800, "center")
-	else
+	if litCandles == NUMCANDLES then
 		love.graphics.printf("Blow out the candles!", 0, 150, 800, "center")
+	elseif litCandles == 0 then
+		love.graphics.printf("Happy Birthday!", 0, 150, 800, "center")
 	end
 end
 
@@ -48,9 +51,10 @@ function love.mousepressed(x, y)
 	for i in pairs(candles) do
 		if candles[i]:isLit() then
 			-- note: candle flames are 32px by 32px
-			if (x - candles[i].x) >= 0 and (x - candles[i].x <= 32) and
-			(y - candles[i].y) >= 0 and (y - candles[i].y) <= 32 then
+			if x - candles[i].x >= 0 and x - candles[i].x <= FLAMEWIDTH and
+			y - candles[i].y >= 0 and y - candles[i].y <= FLAMEHEIGHT then
 				candles[i].lit = false
+				litCandles = litCandles - 1
 			end
 		end
 	end
