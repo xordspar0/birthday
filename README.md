@@ -1,13 +1,13 @@
 birthday
 ========
 
-An interactive birthday card using [LÖVE](http://love2d.org).
+An interactive birthday card made with [LÖVE](http://love2d.org).
+For distribution instructions see the [LÖVE wiki](http://www.love2d.org/wiki/Game_Distribution).
 
 To Do
 -----
 
-* replace placeholder art
-* maybe spice up the color and style
+* nothing for now
 
 Credits
 -------
