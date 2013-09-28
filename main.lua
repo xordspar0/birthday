@@ -3,6 +3,7 @@ require("Candle")
 NUMCANDLES = 6
 FLAMEWIDTH = 32
 FLAMEHEIGHT = 32
+NAME = "Zachary"
 
 function love.load()
 	background = love.graphics.newImage("backgroud.png")
@@ -50,7 +51,7 @@ function love.draw()
 	if litCandles > 0 then
 		love.graphics.printf("Blow out the candles!", 0, 150, 800, "center")
 	else
-		love.graphics.printf("Happy Birthday!", 0, 150, 800, "center")
+		love.graphics.printf("Happy Birthday " .. NAME .. "!", 0, 150, 800, "center")
 	end
 end
 
