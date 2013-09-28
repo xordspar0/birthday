@@ -1,22 +1,25 @@
 require("Candle")
 
-NUMCANDLES = 6
+NUMCANDLES = 9
 FLAMEWIDTH = 32
 FLAMEHEIGHT = 32
 NAME = "Zachary"
 
 function love.load()
-	background = love.graphics.newImage("backgroud.png")
+	background = love.graphics.newImage("cake.png")
 	flame = love.graphics.newImage("flame.png")
 
 	-- initialize the candle objects with the flame locations
 	candles = {
-		Candle:new(245, 270),
-		Candle:new(290, 255),
-		Candle:new(320, 275),
-		Candle:new(350, 260),
-		Candle:new(370, 275),
-		Candle:new(400, 260)
+		Candle:new(324, 300),
+		Candle:new(352, 298),
+		Candle:new(386, 296),
+		Candle:new(415, 303),
+		Candle:new(435, 315),
+		Candle:new(405, 330),
+		Candle:new(372, 335),
+		Candle:new(335, 330),
+		Candle:new(308, 316)
 	}
 	litCandles = NUMCANDLES
 
@@ -63,7 +66,6 @@ function love.mousepressed(x, y)
 	-- check if the user clicked on a candle flame
 	for i in pairs(candles) do
 		if candles[i]:isLit() then
-			-- note: candle flames are 32px by 32px
 			if x - candles[i].x >= 0 and x - candles[i].x <= FLAMEWIDTH and
 			y - candles[i].y >= 0 and y - candles[i].y <= FLAMEHEIGHT then
 				candles[i].lit = false
