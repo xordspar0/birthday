@@ -64,6 +64,10 @@ end
 
 function love.mousepressed(x, y)
 	-- check if the user clicked on a candle flame
+	blowCandle(x, y)
+end
+
+function blowCandle(x, y)
 	for i in pairs(candles) do
 		if candles[i]:isLit() then
 			if x - candles[i].x >= 0 and x - candles[i].x <= FLAMEWIDTH and
