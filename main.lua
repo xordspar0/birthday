@@ -25,8 +25,7 @@ function love.load()
 
 	love.graphics.setNewFont("LinBiolinum_R.otf", 50)
 	
-	-- streaming the file caused love to hang for some reason, hence "static"
-	tune = love.audio.newSource("birthday.ogg", "static")
+	tune = love.audio.newSource("birthday.ogg")
 end
 
 function love.update()
