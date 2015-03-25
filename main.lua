@@ -3,7 +3,7 @@ require("Candle")
 NUMCANDLES = 9
 FLAMEWIDTH = 32
 FLAMEHEIGHT = 32
-NAME = "Zachary"
+NAME = "Anna"
 
 function love.load()
 	background = love.graphics.newImage("cake.png")
